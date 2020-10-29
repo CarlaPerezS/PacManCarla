@@ -23,6 +23,7 @@ ghosts = [
     #[vector(100, 160), vector(0, -5)],
     #[vector(100, -160), vector(-5, 0)],
 ]
+#Cambiar el tablero dado por uno nuevo
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
