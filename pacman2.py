@@ -1,29 +1,24 @@
-"""Pacman, classic arcade game.
-Exercises
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
-"""
+#pacman2.py
+#Carla Perez, Aranza Garcia
+#Juego de pacman con fantasmas más inteligentes y rápidos y con diferente tablero.
 
 from random import choice
 from turtle import *
 from freegames import floor, vector
 import math
 
-state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
-sp=10
+sp=10 #Para hacer a los fantasmas más rapidos se tiene que tener una variable la cual se pueda sustituir en los vectores para aumentar la velocidad.
 ghosts = [
     [vector(-180, 160), vector(sp, 0)],
-    [vector(-180, -160), vector(0, sp)],
+    [vector(-180, -160), vector(0, sp)],# Se sustutuyeron las posiciones +-5 con la variable sp
     [vector(100, 160), vector(0, -sp)],
     [vector(100, -160), vector(-sp, 0)],
 ]
+#Se modificó el tablero del original para que tuviera diferentes características
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -131,7 +126,7 @@ def move():
             options = [
                 vector(sp, 0),
                 vector(-sp, 0),
-                vector(0, sp),
+                vector(0, sp),  #De igual manera se sustituye sp aqui ya que son los movimientos de los fantasmas.
                 vector(0, -sp),
             ]
             
@@ -142,35 +137,35 @@ def move():
             
             #get pacman offset
             poff = offset(pacman) #0-posibles índices de las casillas de la lista
-            pcol = poff%20
-            pren = math.floor(poff/20)
+            pcol = poff%20 # Encuentra la columna donde se encuentra Pacman
+            pren = math.floor(poff/20) #Encuentra el renglón donde se encuentra Pacman
             
             #get ghost offset
             goff = offset(point)
-            gcol = goff%20
-            gren = math.floor(goff/20)
+            gcol = goff%20 # Encuentra la columna donde se encuentra el fantasma
+            gren = math.floor(goff/20) #Encuentra el renglón donde se encuentra el fantasma
             if(pcol < gcol and pren < gren):
                 #elegir arriba o a la izq
                 options = [
                     vector(-sp, 0),
-                    vector(0, sp),
+                    vector(0, sp), #De igual manera se sustituye sp porque son los movimientos del fantasma
                 ]
             if (pcol > gcol and pren < gren):
                 #elegir arriba o a la der
                 options = [
-                    vector(sp, 0),
+                    vector(sp, 0),#De igual manera se sustituye sp porque son los movimientos del fantasma
                     vector(0, sp),
                 ] 
             if(pcol < gcol and pren > gren):
                 #elegir abajo o a la izq
                 options = [
-                    vector(-sp, 0),
+                    vector(-sp, 0), #De igual manera se sustituye sp porque son los movimientos del fantasma
                     vector(0, -sp),
                 ]
             if(pcol > gcol and pren > gren):
                 #elegir abajo o a la der
                 options = [
-                    vector(sp, 0),
+                    vector(sp, 0), #De igual manera se sustituye sp porque son los movimientos del fantasma
                     vector(0, -sp),
                 ]
             #escoger alguna opción
